@@ -6,7 +6,7 @@
 #include <list>
 #include <vector>
 
-
+#include <conio.h>
 
 // supporting functions
 void user_cmd_interface();
@@ -32,6 +32,7 @@ int main(int argc, char* argv[])
 
 void user_cmd_interface()
 {
+	system("cls");
 	std::cout << "============= Lempel - Ziv - Welch =============\n";
 
 	int mode = -1;
@@ -54,20 +55,25 @@ void user_cmd_interface()
 		else
 			std::cout << "ERROR: Invalid path.\n";
 
+		_getch();
+		user_cmd_interface();
 		break;
 
 	case 2:
-		/*std::cout << "\nWybrano opcje dekompresji. Podaj nazwe pliku:\n";
+		std::cout << "\nWybrano opcje dekompresji. Podaj nazwe pliku:\n";
 		std::cin >> path;
-		if (validate_path(path))*/
+		if (validate_path(path))
 			lzw_decompress(path);
-		/*else
-			std::cout << "ERROR: Invalid path.\n";*/
+		else
+			std::cout << "ERROR: Invalid path.\n";
 
+		_getch();
+		user_cmd_interface();
 		break;
 
 	case 'q':
 		exit(0);
+		break;
 	}
 
 }
@@ -189,7 +195,7 @@ std::list<int> lzw_compress(std::string path)
 
 	file.close();
 
-	ofstream output_file("lzw.txt", ios::binary);
+	ofstream output_file(path + ".z", ios::binary);
 
 	for (auto i : result)
 	{
@@ -208,7 +214,7 @@ std::string lzw_decompress(std::string path)
 {
 	using namespace std;
 
-	ifstream file("lzw.txt", std::ios_base::in);
+	ifstream file(path, std::ios_base::in);
 
 	int dictionarySize = 256;
 	unordered_map<int, string> dictionary;
