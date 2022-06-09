@@ -1,10 +1,22 @@
+
+/*!
+ * \file main.cpp
+ *
+ * Application entry point 
+ *
+ * \date maj 2022
+ *
+ *
+ */
+
+
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <sstream>
 #include <unordered_map>
 #include <list>
-#include <filestream>
+#include <filesystem>
 #include <vector>
 
 // supporting functions
@@ -271,9 +283,11 @@ std::string lzw_decompress(std::string path)
 
 	cout << result;
 
-	std::file
+	std::filesystem::path fp(path);
 
-	std::ofstream()
+	std::ofstream out(fp.stem());
+
+	out << result;
 
 	return result;
 }
