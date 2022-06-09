@@ -19,10 +19,18 @@
 #include <filesystem>
 #include <vector>
 
-// supporting functions
+/// Main menu hanlder
 void user_cmd_interface();
+
+/// todo
 void handle_file(std::string);
+
+/// Print file
+/// @param path path to file
 void print_file(std::string path);
+
+/// Check if path is correct
+/// @param path path to check
 bool validate_path(std::string path);
 
 // LZW
@@ -160,7 +168,8 @@ void print_map(std::unordered_map<K, V> const& m)
 
 
 
-// Kompresja pliku LZW 
+/// Compress provided file
+/// @param path path to file
 std::list<int> lzw_compress(std::string path)
 {
 	using namespace std;
@@ -235,7 +244,8 @@ std::list<int> lzw_compress(std::string path)
 
 
 
-// LZW decode
+/// Decompress provided file
+/// @param path path to file
 std::string lzw_decompress(std::string path)
 {
 	using namespace std;
