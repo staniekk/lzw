@@ -25,9 +25,6 @@ void user_cmd_interface();
 /// todo
 void handle_file(std::string);
 
-/// Print file
-/// @param path path to file
-void print_file(std::string path);
 
 /// Check if path is correct
 /// @param path path to check
@@ -106,7 +103,7 @@ void user_cmd_interface()
 		break;
 
 	case 'q':
-		exit(0);
+		exit(EXIT_SUCCESS);
 		break;
 	}
 
@@ -118,13 +115,6 @@ bool validate_path(std::string path)
 {
 	std::ifstream f(path.c_str());
 	return f.good();
-}
-
-
-// Printing data in file
-void print_file(std::string path)
-{
-	;
 }
 
 
